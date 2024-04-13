@@ -7,15 +7,14 @@ const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
 buttons.addEventListener("click", (event) => {    
-    if (!operator && event.target.classList.contains("btn-num")) {
-        display.textContent = setFirstNumber(event.target.value);
+    if (event.target.classList.contains("btn-num")) {
+        (!operator)
+            ? display.textContent = setFirstNumber(event.target.value)
+            : display.textContent = setSecondNumber(event.target.value)
 
     } else if (event.target.classList.contains("btn-operator")) {
         operator = event.target.value;
         event.target.focus();
-
-    } else if (operator && event.target.classList.contains("btn-num")) {
-        display.textContent = setSecondNumber(event.target.value);
 
     } else if (event.target.classList.contains("btn-equals")) {
         display.textContent = (operate(firstNumber, secondNumber, operator));
