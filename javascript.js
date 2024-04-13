@@ -5,6 +5,7 @@ let displayValue = "0";
 
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
+display.textContent = displayValue;
 
 buttons.addEventListener("click", (event) => {    
     if (event.target.classList.contains("btn-num")) {
@@ -24,6 +25,15 @@ buttons.addEventListener("click", (event) => {
             display.textContent = firstNumber;
         }
         
+    } else if (event.target.value === "sign") {
+        if (!operator) {
+            firstNumber = -firstNumber;
+            display.textContent = firstNumber;
+        } else {
+            secondNumber = -secondNumber;
+            display.textContent = secondNumber;
+        }
+
     } else if (event.target.classList.contains("btn-equals")) {
         (firstNumber && operator && secondNumber)
             ? display.textContent = operate(firstNumber, secondNumber, operator)
