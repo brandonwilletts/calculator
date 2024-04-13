@@ -24,7 +24,9 @@ buttons.addEventListener("click", (event) => {
         }
         
     } else if (event.target.classList.contains("btn-equals")) {
-        display.textContent = operate(firstNumber, secondNumber, operator);
+        (firstNumber && operator && secondNumber)
+            ? display.textContent = operate(firstNumber, secondNumber, operator)
+            : null
 
     } else if (event.target.value === "clear") {
         display.textContent = clear();
