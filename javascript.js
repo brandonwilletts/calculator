@@ -14,6 +14,7 @@ buttons.addEventListener("click", (event) => {
 
     } else if (event.target.classList.contains("btn-operator")) {
         if (!secondNumber) {
+            (!firstNumber) ? firstNumber = "0" : firstNumber
             operator = event.target.value;
             event.target.focus();
         } else {
