@@ -33,5 +33,3 @@ function operate (num1, num2, operator) {
         return divide(num1, num2);
     }
 }
-
-console.log(operate(2, 4, "/"));
