@@ -1,17 +1,54 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 let displayValue = "0";
 
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
-buttons.addEventListener("click", (event) => {
-    displayValue = event.target.value;
-    display.textContent = displayValue;
+
+buttons.addEventListener("click", (event) => {    
+    if (!operator && event.target.classList.contains("btn-num")) {
+        display.textContent = setFirstNumber(event.target.value);
+
+    } else if (event.target.classList.contains("btn-operator")) {
+        operator = event.target.value;
+        event.target.focus();
+
+    } else if (operator && event.target.classList.contains("btn-num")) {
+        display.textContent = setSecondNumber(event.target.value);
+
+    } else if (event.target.classList.contains("btn-equals")) {
+        display.textContent = (operate(firstNumber, secondNumber, operator));
+
+    } else if (event.target.value === "clear") {
+        display.textContent = clear();
+    }
 });
 
+function setFirstNumber(numClicked) {
+    if (numClicked) {
+        firstNumber = firstNumber + numClicked;
+    }
+    return firstNumber;
+}
+
+function setSecondNumber(numClicked) {
+    if (numClicked) {
+        secondNumber = secondNumber + numClicked;
+    }
+    return secondNumber;
+}
+
+function clear() {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    displayValue = "0";
+    return displayValue;
+}
+
 function add (num1, num2) {
-    return num1 + num2;
+    return Number(num1) + Number(num2);
 };
 
 function subtract (num1, num2) {
