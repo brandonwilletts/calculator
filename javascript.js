@@ -13,11 +13,18 @@ buttons.addEventListener("click", (event) => {
             : display.textContent = setSecondNumber(event.target.value)
 
     } else if (event.target.classList.contains("btn-operator")) {
-        operator = event.target.value;
-        event.target.focus();
-
+        if (!secondNumber) {
+            operator = event.target.value;
+            event.target.focus();
+        } else {
+            firstNumber = operate(firstNumber, secondNumber, operator);
+            secondNumber = "";
+            operator = event.target.value;
+            display.textContent = firstNumber;
+        }
+        
     } else if (event.target.classList.contains("btn-equals")) {
-        display.textContent = (operate(firstNumber, secondNumber, operator));
+        display.textContent = operate(firstNumber, secondNumber, operator);
 
     } else if (event.target.value === "clear") {
         display.textContent = clear();
