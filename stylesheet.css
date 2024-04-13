@@ -1,14 +1,15 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #calculator {
     display: inline-flex;
     flex-direction: column;
     background-color: black;
     border-radius: 32px;
     padding: 24px;
-    gap: 16px;
-}
-
-.btn-row {
-    display: flex;
     gap: 16px;
 }
 
@@ -21,6 +22,17 @@
     color: white;
     font-size: 80px;
     padding: 0 16px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 16px;
 }
 
 .btn {
