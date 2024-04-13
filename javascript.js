@@ -29,14 +29,14 @@ function setFirstNumber(numClicked) {
     if (numClicked) {
         firstNumber = firstNumber + numClicked;
     }
-    return firstNumber;
+    return Number(firstNumber);
 }
 
 function setSecondNumber(numClicked) {
     if (numClicked) {
         secondNumber = secondNumber + numClicked;
     }
-    return secondNumber;
+    return Number(secondNumber);
 }
 
 function clear() {
