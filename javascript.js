@@ -64,7 +64,7 @@ function displayContent (content) {
 }
 
 function setNumber (number, numberClick) {
-    if (number === "0") {
+    if (number == "0") {
         number = numberClick
     } else {
         (number.toString().length <= 7)
@@ -87,7 +87,7 @@ function changeSign (number) {
         displayContent(number);
         return number;
     } else {
-        number = "0";
+        number = 0;
         displayContent(number);
         return number;
     }
@@ -98,9 +98,8 @@ function convertToPercentage (number) {
         number = number / 100;
         displayContent(number);
         return number;
-        
     } else {
-        number = "0";
+        number = 0;
         displayContent(number);
         return number;
     }
