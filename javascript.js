@@ -4,7 +4,7 @@ let operator = "";
 
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
-display.textContent = "0";
+displayContent("0");
 
 buttons.addEventListener("click", (event) => {    
     if (event.target.classList.contains("btn-num")) {
@@ -26,7 +26,7 @@ buttons.addEventListener("click", (event) => {
             firstNumber = operate(firstNumber, secondNumber, operator);
             secondNumber = "";
             operator = event.target.value;
-            display.textContent = firstNumber;
+            displayContent(firstNumber);
         }
         
     } else if (event.target.value === "sign") {
@@ -41,7 +41,7 @@ buttons.addEventListener("click", (event) => {
 
     } else if (event.target.classList.contains("btn-equals")) {
         (firstNumber && operator && secondNumber)
-            ? display.textContent = operate(firstNumber, secondNumber, operator)
+            ? displayContent(operate(firstNumber, secondNumber, operator))
             : null
 
     } else if (event.target.value === "clear") {
@@ -49,27 +49,41 @@ buttons.addEventListener("click", (event) => {
     }
 });
 
+function displayContent (content) {
+    let length = content.toString().length;
+    if (length <= 7) {
+        display.style.cssText = "font-size: 80px";
+    } else if (length > 7 && length <= 10) {
+        display.style.cssText = "font-size: 60px";
+    } else if (length > 10 && length <= 15) {
+        display.style.cssText = "font-size: 40px";
+    } else {
+        display.style.cssText = "font-size: 28px";
+    }
+    display.textContent = content;
+}
+
 function setNumber (number, numberClick) {
     (number === "0") ? number = numberClick : number = number + numberClick
-    display.textContent = number;
+    displayContent(number);
     return number;
 }
 
 function addDecimal (number) {
     (!number) ? number = 0 + "." : number = number + "."
-    display.textContent = number;
+    displayContent(number);
     return number;
 }
 
 function changeSign (number) {
     number = -number;
-    display.textContent = number;
+    displayContent(number);
     return number;
 }
 
 function convertToPercentage (number) {
     number = number / 100;
-    display.textContent = number;
+    displayContent(number);
     return number;
 }
 
@@ -77,7 +91,7 @@ function clear() {
     firstNumber = "";
     secondNumber = "";
     operator = "";
-    display.textContent = "0";
+    displayContent("0");
 }
 
 function operate (num1, num2, operator) {
