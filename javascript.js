@@ -88,9 +88,11 @@ function changeSign (number) {
 }
 
 function convertToPercentage (number) {
-    number = number / 100;
-    displayContent(number);
-    return number;
+    if (number > 0) {
+        number = number / 100;
+        displayContent(number);
+        return number;
+    }   
 }
 
 function reset() {
