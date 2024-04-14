@@ -45,13 +45,22 @@ buttons.addEventListener("click", (event) => {
 });
 
 function setFirstNumber(numClicked) {
-    firstNumber = firstNumber + numClicked;
-    return Number(firstNumber);
+    if (numClicked === "." && firstNumber % 1 != 0) {
+        return Number(firstNumber);
+    } else {
+        firstNumber = firstNumber + numClicked
+        return Number(firstNumber);
+    }
+    
 }
 
 function setSecondNumber(numClicked) {
-    secondNumber = secondNumber + numClicked;
-    return Number(secondNumber);
+    if (numClicked === "." && secondNumber % 1 != 0) {
+        return Number(secondNumber);
+    } else {
+        secondNumber = secondNumber + numClicked
+        return Number(secondNumber);
+    }
 }
 
 function clear() {

@@ -53,8 +53,7 @@ body {
     color: black;
 }
 
-.btn-num,
-.btn-decimal {
+.btn-num {
     background-color: #353535;
     color: white;
 }
@@ -69,8 +68,7 @@ body {
     background-color: #e9e9e7;
 }
 
-.btn-num:active,
-.btn-decimal:active {
+.btn-num:active {
     background-color: #6b6b6b;
 }
 
