@@ -93,6 +93,11 @@ function convertToPercentage (number) {
     return number;
 }
 
+function reset() {
+    firstNumber = "";
+    secondNumber = "";
+}
+
 function clear() {
     firstNumber = "";
     secondNumber = "";
@@ -103,15 +108,23 @@ function clear() {
 function operate (num1, num2, operator) {
     switch (operator) {
         case("+"):
-        return Number(num1) + Number(num2);
+        firstNumber = Number(num1) + Number(num2);
+        secondNumber = "";
+        return firstNumber;
 
         case("-"):
-        return num1 - num2;
-
+        firstNumber = num1 - num2;
+        secondNumber = "";
+        return firstNumber;
+        
         case("*"):
-        return num1 * num2;
+        firstNumber = num1 * num2;
+        secondNumber = "";
+        return firstNumber;
 
         case("/"):
-        return num1 / num2;
+        firstNumber = num1 / num2;
+        secondNumber = "";
+        return firstNumber;
     }
 }
