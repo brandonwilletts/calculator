@@ -82,17 +82,28 @@ function addDecimal (number) {
 }
 
 function changeSign (number) {
-    number = -number;
-    displayContent(number);
-    return number;
+    if (number != 0) {
+        number = -number;
+        displayContent(number);
+        return number;
+    } else {
+        number = "0";
+        displayContent(number);
+        return number;
+    }
 }
 
 function convertToPercentage (number) {
-    if (number > 0) {
+    if (number != 0) {
         number = number / 100;
         displayContent(number);
         return number;
-    }   
+        
+    } else {
+        number = "0";
+        displayContent(number);
+        return number;
+    }
 }
 
 function reset() {
