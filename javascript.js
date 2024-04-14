@@ -1,17 +1,21 @@
 let firstNumber = "";
 let secondNumber = "";
 let operator = "";
-let displayValue = "0";
 
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
-display.textContent = displayValue;
+display.textContent = "0";
 
 buttons.addEventListener("click", (event) => {    
     if (event.target.classList.contains("btn-num")) {
         (!operator)
-            ? display.textContent = setFirstNumber(event.target.value)
-            : display.textContent = setSecondNumber(event.target.value)
+            ? firstNumber = setNumber(firstNumber, event.target.value)
+            : secondNumber = setNumber(secondNumber, event.target.value)
+
+    } else if (event.target.classList.contains("btn-decimal")) {
+        (!operator)
+            ? firstNumber = addDecimal(firstNumber)
+            : secondNumber = addDecimal(secondNumber)       
 
     } else if (event.target.classList.contains("btn-operator")) {
         if (!secondNumber) {
@@ -26,13 +30,14 @@ buttons.addEventListener("click", (event) => {
         }
         
     } else if (event.target.value === "sign") {
-        if (!operator) {
-            firstNumber = -firstNumber;
-            display.textContent = firstNumber;
-        } else {
-            secondNumber = -secondNumber;
-            display.textContent = secondNumber;
-        }
+        (!operator)
+            ? firstNumber = changeSign(firstNumber)
+            : secondNumber = changeSign(secondNumber)
+
+    } else if (event.target.value === "percent") {
+        (!operator)
+            ? firstNumber = convertToPercentage(firstNumber)
+            : secondNumber = convertToPercentage(secondNumber)
 
     } else if (event.target.classList.contains("btn-equals")) {
         (firstNumber && operator && secondNumber)
@@ -40,35 +45,39 @@ buttons.addEventListener("click", (event) => {
             : null
 
     } else if (event.target.value === "clear") {
-        display.textContent = clear();
+        clear();
     }
 });
 
-function setFirstNumber(numClicked) {
-    if (numClicked === "." && firstNumber % 1 != 0) {
-        return Number(firstNumber);
-    } else {
-        firstNumber = firstNumber + numClicked
-        return Number(firstNumber);
-    }
-    
+function setNumber (number, numberClick) {
+    (number === "0") ? number = numberClick : number = number + numberClick
+    display.textContent = number;
+    return number;
 }
 
-function setSecondNumber(numClicked) {
-    if (numClicked === "." && secondNumber % 1 != 0) {
-        return Number(secondNumber);
-    } else {
-        secondNumber = secondNumber + numClicked
-        return Number(secondNumber);
-    }
+function addDecimal (number) {
+    (!number) ? number = 0 + "." : number = number + "."
+    display.textContent = number;
+    return number;
+}
+
+function changeSign (number) {
+    number = -number;
+    display.textContent = number;
+    return number;
+}
+
+function convertToPercentage (number) {
+    number = number / 100;
+    display.textContent = number;
+    return number;
 }
 
 function clear() {
     firstNumber = "";
     secondNumber = "";
     operator = "";
-    displayValue = "0";
-    return displayValue;
+    display.textContent = "0";
 }
 
 function operate (num1, num2, operator) {

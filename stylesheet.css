@@ -32,6 +32,7 @@ body {
 
 .btn-row {
     display: flex;
+    justify-content: center;
     gap: 16px;
 }
 
@@ -53,7 +54,8 @@ body {
     color: black;
 }
 
-.btn-num {
+.btn-num,
+.btn-decimal {
     background-color: #353535;
     color: white;
 }
@@ -68,7 +70,8 @@ body {
     background-color: #e9e9e7;
 }
 
-.btn-num:active {
+.btn-num:active,
+.btn-decimal:active {
     background-color: #6b6b6b;
 }
 
