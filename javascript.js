@@ -51,9 +51,9 @@ buttons.addEventListener("click", (event) => {
 
 function displayContent (content) {
     let length = content.toString().length;
-    if (length <= 7) {
-        display.style.cssText = "font-size: 80px";
-    } else if (length > 7 && length <= 10) {
+    if (length <= 8) {
+        display.style.cssText = "font-size: 75px";
+    } else if (length > 8 && length <= 10) {
         display.style.cssText = "font-size: 60px";
     } else if (length > 10 && length <= 15) {
         display.style.cssText = "font-size: 40px";
@@ -64,7 +64,13 @@ function displayContent (content) {
 }
 
 function setNumber (number, numberClick) {
-    (number === "0") ? number = numberClick : number = number + numberClick
+    if (number === "0") {
+        number = numberClick
+    } else {
+        (number.toString().length <= 7)
+            ? number = number + numberClick
+            : null;
+    }
     displayContent(number);
     return number;
 }
